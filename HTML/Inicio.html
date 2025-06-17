@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BiciVentura</title>
+  <link rel="stylesheet" href="/CSS/Inicio.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="header__logo">🚲 BiciVentura</div>
+    <nav class="header__nav">
+      <a href="#inicio" class="nav__link">Inicio</a>
+      <a href="#mision" class="nav__link">Nosotros</a>
+      <a href="#contacto" class="nav__link">Contacto</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="inicio">
+    <div class="hero__overlay">
+      <div class="hero__content">
+        <h1 class="hero__title">Explora la ciudad en dos ruedas</h1>
+        <p class="hero__subtitle">Conectá con la libertad y la aventura.</p>
+        <button class="hero__button" onclick="mostrarFormulario()">Registrarse</button>
+
+
+      </div>
+    </div>
+  </section>
+
+  <section class="formulario" id="formulario">
+    <h2 class="formulario__titulo">Formulario de Registro</h2>
+    <form class="formulario__form">
+      <div class="formulario__grupo">
+        <label for="nombre" class="formulario__label">Nombre</label>
+        <input type="text" id="nombre" class="formulario__input" required>
+      </div>
+      <div class="formulario__grupo">
+        <label for="correo" class="formulario__label">Correo</label>
+        <input type="email" id="correo" class="formulario__input" required>
+      </div>
+      <div class="formulario__grupo">
+        <label for="clave" class="formulario__label">Contraseña</label>
+        <input type="password" id="clave" class="formulario__input" required>
+      </div>
+      <button type="submit" class="formulario__boton">Enviar</button>
+    </form>
+  </section>
+
+  <section class="info" id="mision">
+    <h2 class="info__titulo">Nuestra Esencia</h2>
+    <div class="info__contenedor">
+      <div class="info__caja">
+        <h3 class="info__subtitulo">Misión</h3>
+        <p class="info__texto">Ofrecer experiencias únicas en movilidad sostenible, fomentando el turismo activo y saludable en bicicleta.</p>
+      </div>
+      <div class="info__caja">
+        <h3 class="info__subtitulo">Visión</h3>
+        <p class="info__texto">Ser la empresa líder en alquiler de bicicletas en la región, reconocida por nuestro servicio y compromiso con el medio ambiente.</p>
+      </div>
+      <div class="info__caja">
+        <h3 class="info__subtitulo">Valores</h3>
+        <p class="info__texto">Responsabilidad, puntualidad, respeto al cliente, amor por la naturaleza y trabajo en equipo.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer" id="contacto">
+    <p class="footer__text">© 2025 BiciVentura - Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="/Script/Inicio.js"></script>
+</body>
+</html>
