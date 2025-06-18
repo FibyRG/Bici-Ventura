@@ -1,34 +1,76 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <title>Registro de Usuario</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registro</title>
-  <link rel="stylesheet" href="../CSS/Style.css" />
+
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="../CSS/Login1.css">
+
+
 </head>
-<body>
-  <div class="form-body">
-    <img src="../Img/img.png" alt="Logo BiciVentura">
-    <p class="text">Registro de Usuario</p>
-    <form action="Dashboard.html" method="GET">
-    
-    <form class="Login-form">
-      <input type="text" placeholder="Nombre completo" name="nombre">
-      <input type="text" placeholder="Correo electrónico" name="email">
-      <input type="password" placeholder="Crear contraseña" name="password">
-      <input type="password" placeholder="Confirmar contraseña" name="confirmar_password">
-      
-      <button type="submit">Registrarse</button>
-      <button type="button" onclick="volverAlLogin()">Volver</button>
-    </form>
-    </form>
-  </div>
+<body class="img js-fullheight" style="background-image: url(/Img/bg.jpg);">
 
-  <script>
-    function volverAlLogin() {
-      window.location.href = "IniciarSesion.html";
+  <section class="ftco-section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6 text-center mb-5">
+          <h2 class="heading-section">Registro de Usuario</h2>
+        </div>
+      </div>
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4">
+            <div class="login-wrap p-0">
+              <h3 class="mb-4 text-center">Crea tu cuenta</h3>
+
+            <form id="registroForm" class="signin-form">
+
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Nombre completo" required>
+                </div>
+                <div class="form-group">
+                  <input type="email" class="form-control" placeholder="Correo electrónico" required>
+                </div>
+                <div class="form-group">
+                  <input id="password-field" type="password" class="form-control" placeholder="Contraseña" required>
+                  <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                </div>
+                <div class="form-group">
+                  <input id="confirm-password-field" type="password" class="form-control" placeholder="Confirmar contraseña" required>
+                  <span toggle="#confirm-password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                </div>
+                <div class="form-group">
+                  <button type="submit" class="form-control btn btn-primary submit px-3">Registrarse</button>
+                </div>
+
+              </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+<script>
+  document.getElementById('registroForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const password = document.getElementById('password-field').value;
+    const confirmPassword = document.getElementById('confirm-password-field').value;
+
+    if (password !== confirmPassword) {
+      alert('Las contraseñas no coinciden');
+      return;
     }
-  </script>
-</body>
-</html>
 
+    // Si todo está bien, redirigir
+    window.location.href = "/HTML/Dashboard.html";
+  });
+</script>
+
+
+  </body>
+</html>
