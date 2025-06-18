@@ -43,7 +43,7 @@ body {
 
 /* HERO */
 .hero {
-  background-image: url('tu-imagen.jpg'); /* Reemplazá con tu imagen real */
+  background-image: url('../Img/bg.jpg'); 
   background-size: cover;
   background-position: center;
   height: 90vh;
