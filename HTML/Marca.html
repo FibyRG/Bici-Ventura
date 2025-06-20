@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Listado de Marcas</title>
+  <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/CSS/Marca.css">
+</head>
+<body>
+
+  <a href="/HTML/Dashboard.html" class="back-button">
+    <i class='bx bx-arrow-back'></i> Volver
+  </a>
+
+  <div class="title-container">
+    <h2>Listado de Marcas</h2>
+    <button id="addMarcaBtn" class="btn-add">Agregar Marca</button>
+  </div>
+
+  <table id="loadMarcaList" class="table-client">
+    <thead class="table-client__head">
+      <tr>
+        <th class="table-client__header">Código</th>
+        <th class="table-client__header">Descripción</th>
+        <th class="table-client__header">Editar</th>
+        <th class="table-client__header">Eliminar</th>
+      </tr>
+    </thead>
+    <tbody class="table-client__body">
+      <!-- Filas dinámicas se agregarán aquí -->
+    </tbody>
+  </table>
+
+  <!-- Modal de Marca -->
+  <div id="marcaModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeMarcaModal">&times;</span>
+      <h2 id="modal-title" class="modal__title">Agregar Marca</h2>
+      <form id="marcaForm" class="form-client">
+        <label for="codigo" class="form-client__label">Código:</label>
+        <input type="text" id="codigo" class="form-client__input" required>
+
+        <label for="descripcion" class="form-client__label">Descripción:</label>
+        <input type="text" id="descripcion" class="form-client__input" required>
+
+        <button type="submit" id="guardarBtn" class="btn-save">Guardar</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="/Script/Marca.js"></script>
+</body>
+</html>

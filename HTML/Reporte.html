@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Reporte Bicicletas por Marca</title>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 20px;
+      background: #f4f4f4;
+      color: #333;
+    }
+
+    /* Botón de volver */
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1rem;
+      text-decoration: none;
+      color: #0a3d62;
+      background-color: #dcefff;
+      padding: 8px 14px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .back-button i {
+      font-size: 1.2rem;
+    }
+
+    .back-button:hover {
+      background-color: #cbe6fc;
+      color: #0a3d62;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .descripcion {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 1rem;
+      color: #555;
+    }
+
+    .chart-box {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 40px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .chart-box h2 {
+      font-size: 1.3rem;
+      margin-bottom: 5px;
+      color: #2c3e50;
+    }
+
+    .chart-box p {
+      margin-bottom: 15px;
+      font-size: 0.95rem;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="dashboard.html" class="back-button">
+    <i class='bx bx-arrow-back'></i> Volver
+  </a>
+
+  <h1>🚲 Reporte de Bicicletas por Marca</h1>
+  <p class="descripcion">
+    Este reporte analiza la distribución y costos de bicicletas según su marca.
+  </p>
+
+  <div class="chart-box">
+    <h2>🏷️ Cantidad de Bicicletas por Marca</h2>
+    <p>Número de bicicletas registradas por cada marca.</p>
+    <div id="bar-chart"></div>
+  </div>
+
+  <div class="chart-box">
+    <h2>💲 Precio Promedio de Compra por Marca</h2>
+    <p>Promedio del precio de compra de bicicletas agrupadas por marca.</p>
+    <div id="line-chart"></div>
+  </div>
+
+  <div class="chart-box">
+    <h2>🔧 Costo Promedio de Alquiler por Marca</h2>
+    <p>Costo promedio de alquiler de bicicletas según su marca.</p>
+    <div id="radar-chart"></div>
+  </div>
+
+  <script>
+    async function getData(url) {
+      const res = await fetch(url);
+      return await res.json();
+    }
+
+    async function renderCharts() {
+      const [marcas, bicicletas] = await Promise.all([
+        getData("http://127.0.0.1:8000/Catalogo/marcas/"),
+        getData("http://127.0.0.1:8000/Catalogo/bicicletas/")
+      ]);
+
+      const mapMarca = {};
+      for (const m of marcas) {
+        mapMarca[m.id] = m.DescripcionMarca;
+      }
+
+      const bicicletasConMarca = bicicletas.map(b => ({
+        ...b,
+        MarcaNombre: mapMarca[b.Marca_Id]
+      }));
+
+      const agrupado = {};
+      for (const b of bicicletasConMarca) {
+        const marca = b.MarcaNombre || 'Sin Marca';
+        if (!agrupado[marca]) agrupado[marca] = [];
+        agrupado[marca].push(b);
+      }
+
+      const marcasNombres = Object.keys(agrupado);
+
+      const cantidadPorMarca = marcasNombres.map(m => agrupado[m].length);
+
+      const precioPromedio = marcasNombres.map(m => {
+        const lista = agrupado[m];
+        const total = lista.reduce((acc, b) => acc + parseFloat(b.PrecioCompra || 0), 0);
+        return (total / lista.length).toFixed(2);
+      });
+
+      const alquilerPromedio = marcasNombres.map(m => {
+        const lista = agrupado[m];
+        const total = lista.reduce((acc, b) => acc + parseFloat(b.CostoAlquiler || 0), 0);
+        return (total / lista.length).toFixed(2);
+      });
+
+      new ApexCharts(document.querySelector("#bar-chart"), {
+        chart: { type: 'bar', height: 350 },
+        series: [{ name: "Bicicletas", data: cantidadPorMarca }],
+        xaxis: { categories: marcasNombres }
+      }).render();
+
+      new ApexCharts(document.querySelector("#line-chart"), {
+        chart: { type: 'line', height: 350 },
+        series: [{ name: "Precio Promedio", data: precioPromedio }],
+        xaxis: { categories: marcasNombres }
+      }).render();
+
+      new ApexCharts(document.querySelector("#radar-chart"), {
+        chart: { type: 'radar', height: 350 },
+        series: [{ name: "Costo Alquiler Promedio", data: alquilerPromedio }],
+        labels: marcasNombres
+      }).render();
+    }
+
+    renderCharts();
+  </script>
+
+</body>
+</html>

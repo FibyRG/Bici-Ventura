@@ -5,70 +5,75 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dashboard BiciVenturas</title>
   <link rel="stylesheet" href="/CSS/Dashboard.css" />
+  <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
+  <style>
+    /* Añadí estilos para el submenu desplegable, por si no están en tu CSS */
+    .has-submenu > .submenu {
+      display: none;
+      padding-left: 1.5rem;
+      list-style: none;
+      margin-top: 0.5rem;
+    }
+    .has-submenu.open > .submenu {
+      display: block;
+    }
+    .arrow {
+      margin-left: auto;
+      transition: transform 0.3s;
+    }
+    .has-submenu.open > .arrow {
+      transform: rotate(180deg);
+    }
+  </style>
 </head>
 
 <body>
-    <nav>
+  <nav>
+    <div class="logo">
+      <i class="bx bx-menu menu-icon"></i>
+      <span class="logo-name">BiciVentura</span>
+    </div>
+    <div class="sidebar">
       <div class="logo">
         <i class="bx bx-menu menu-icon"></i>
         <span class="logo-name">BiciVentura</span>
       </div>
-      <div class="sidebar">
-        <div class="logo">
-          <i class="bx bx-menu menu-icon"></i>
-          <span class="logo-name">BiciVentura</span>
-        </div>
-        <div class="sidebar-content">
-          <ul class="lists">
-            <li class="list">
-              <a href="#" class="nav-link">
-                <i class="bx bx-home-alt icon"></i>
-                <span class="link">Dashboard</span>
-              </a>
-            </li>
-            <li class="list">
-              <a href="Bicicletas.html" class="nav-link">
-                <i class="bx bx-cycling icon"></i>
-                <span class="link">Bicicletas</span>
-              </a>
-            </li>
-            
-            <li class="list">
-              <a href="#" class="nav-link">
-                <i class="bx bx-pie-chart-alt-2 icon"></i>
-                <span class="link">Datos</span>
-              </a>
-            </li>
-            <li class="list">
-              <a href="#" class="nav-link">
-                <i class="bx bx-heart icon"></i>
-                <span class="link">Alquiler</span>
-              </a>
-            </li>
-            <li class="list">
-              <a href="#" class="nav-link">
-                <i class="bx bx-folder-open icon"></i>
-                <span class="link">Files</span>
-              </a>
-            </li>
-          </ul>
-          <div class="bottom-cotent">
-            <li class="list">
-              <a href="#" class="nav-link">
-                <i class="bx bx-cog icon"></i>
-                <span class="link">Settings</span>
-              </a>
-            </li>
-          </div>
+      <div class="sidebar-content">
+        <ul class="lists">
+          <li class="list">
+            <a href="#" class="nav-link">
+              <i class="bx bx-home-alt icon"></i>
+              <span class="link">Dashboard</span>
+            </a>
+          </li>
+
+          <li class="list has-submenu">
+            <a href="#" class="nav-link">
+              <i class="bx bx-folder icon"></i>
+              <span class="link">Catálogos</span>
+              <i class="bx bx-chevron-down arrow"></i>
+            </a>
+            <ul class="submenu">
+              <li><a href="Marca.html" class="nav-link">🚲 Marcas</a></li>
+              <li><a href="Datos.html" class="nav-link">📉 Datos</a></li>
+          </li>
+        </ul>
+        <div class="bottom-cotent">
+          <li class="list">
+            <a href="Reporte.html" class="nav-link">
+              <span class="link">Reporte</span>
+            </a>
+          </li>
         </div>
       </div>
-    </nav>
+    </div>
+  </nav>
 
   <main class="dashboard">
     <header class="dashboard__header">
       <h1 class="dashboard__title">Dashboard BiciVenturas</h1>
+      
     </header>
 
     <section class="dashboard__cards">
@@ -111,7 +116,7 @@
         </thead>
         <tbody class="table__body">
           <tr class="table__row"><td class="table__cell">Juan Pérez</td><td class="table__cell">Luis Gomez</td><td class="table__cell">Montera</td><td class="table__cell">20/04/2025</td><td class="table__cell">10:30AM</td><td class="table__cell">Bueno</td></tr>
-          <tr class="table__row"><td class="table__cell">Manuel Pérez</td><td class="table__cell">Fiby Requena</td><td class="table__cell">Urbana</td><td class="table__cell">30/31/2025</td><td class="table__cell">02:30AM</td><td class="table__cell">Bueno</td></tr>
+          <tr class="table__row"><td class="table__cell">Manuel Pérez</td><td class="table__cell">Fiby Requena</td><td class="table__cell">Urbana</td><td class="table__cell">31/03/2025</td><td class="table__cell">02:30AM</td><td class="table__cell">Bueno</td></tr>
           <tr class="table__row"><td class="table__cell">Raquel Quintanilla</td><td class="table__cell">Kathering Cano</td><td class="table__cell">Electrica</td><td class="table__cell">14/02/2024</td><td class="table__cell">11:30AM</td><td class="table__cell">Bueno</td></tr>
           <tr class="table__row"><td class="table__cell">Martha Carcache</td><td class="table__cell">Nahomy Ponce</td><td class="table__cell">Urbana</td><td class="table__cell">11/03/2025</td><td class="table__cell">01:00AM</td><td class="table__cell">Bueno</td></tr>
           <tr class="table__row"><td class="table__cell">Manuel Pérez</td><td class="table__cell">Maria Baez</td><td class="table__cell">Electrica</td><td class="table__cell">11/03/2025</td><td class="table__cell">01:30AM</td><td class="table__cell">Bueno</td></tr>
@@ -121,7 +126,17 @@
       </table>
     </section>
   </main>
-  
+
   <script src="/Script/Dashboard.js"></script>
+
+  <script>
+    // Funcionalidad para desplegar submenu Catálogos
+    document.querySelectorAll('.has-submenu > .nav-link').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        this.parentElement.classList.toggle('open');
+      });
+    });
+  </script>
 </body>
 </html>

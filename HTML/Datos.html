@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Listado de Personas</title>
+  <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/CSS/Dato.css">
+</head>
+<body>
+
+  <a href="/HTML/Dashboard.html" class="back-button">
+    <i class='bx bx-arrow-back'></i> Volver
+  </a>
+
+  <div class="title-container">
+    <h2>Listado de Personas</h2>
+    <button id="addPersonaBtn" class="btn-add">Agregar Persona</button>
+  </div>
+
+  <table id="loadPersonaList" class="table-client">
+    <thead class="table-client__head">
+      <tr>
+        <th class="table-client__header">Código</th>
+        <th class="table-client__header">Nombres</th>
+        <th class="table-client__header">Apellido 1</th>
+        <th class="table-client__header">Apellido 2</th>
+        <th class="table-client__header">Dirección</th>
+        <th class="table-client__header">Teléfono</th>
+        <th class="table-client__header">Editar</th>
+        <th class="table-client__header">Eliminar</th>
+      </tr>
+    </thead>
+    <tbody class="table-client__body">
+      <!-- Filas dinámicas se agregarán aquí -->
+    </tbody>
+  </table>
+
+  <!-- Modal de Persona -->
+  <div id="personaModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeModal">&times;</span>
+      <h2 id="modal-title" class="modal__title">Agregar Persona</h2>
+      <form id="personaForm" class="form-client">
+        <label for="codigo" class="form-client__label">Código:</label>
+        <input type="text" id="codigo" class="form-client__input" required>
+
+        <label for="nombres" class="form-client__label">Nombres:</label>
+        <input type="text" id="nombres" class="form-client__input" required>
+
+        <label for="apellido1" class="form-client__label">Apellido 1:</label>
+        <input type="text" id="apellido1" class="form-client__input" required>
+
+        <label for="apellido2" class="form-client__label">Apellido 2:</label>
+        <input type="text" id="apellido2" class="form-client__input">
+
+        <label for="direccion" class="form-client__label">Dirección:</label>
+        <input type="text" id="direccion" class="form-client__input">
+
+        <label for="telefono" class="form-client__label">Teléfono:</label>
+        <input type="text" id="telefono" class="form-client__input">
+
+        <button type="submit" id="guardarBtn" class="btn-save">Guardar</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="/Script/Dato.js"></script>
+</body>
+</html>
